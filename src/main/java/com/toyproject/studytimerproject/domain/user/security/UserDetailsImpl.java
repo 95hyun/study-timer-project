@@ -1,6 +1,7 @@
 package com.toyproject.studytimerproject.domain.user.security;
 
 import com.toyproject.studytimerproject.domain.user.entity.User;
+import com.toyproject.studytimerproject.domain.user.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,7 +31,14 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        UserRole role = user.getRole();
+        String authority = role.getAuthority();
+
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(simpleGrantedAuthority);
+
+        return authorities;
     }
 
     @Override

@@ -29,6 +29,10 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String nickname;
 
+    @Column
+    @Enumerated(value = EnumType.STRING)
+    private UserRole role;
+
     @OneToMany(mappedBy = "user")
     private List<AccessToken> accessTokens;
 
@@ -42,5 +46,6 @@ public class User extends BaseEntity {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+        this.role = UserRole.MEMBER;
     }
 }
