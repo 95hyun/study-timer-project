@@ -6,7 +6,6 @@ import com.toyproject.studytimerproject.domain.study.entity.StudyMember;
 import com.toyproject.studytimerproject.domain.study.entity.StudyMemberRole;
 import com.toyproject.studytimerproject.domain.study.repository.StudyMemberRepository;
 import com.toyproject.studytimerproject.domain.study.repository.StudyRepository;
-import com.toyproject.studytimerproject.domain.user.repository.UserRepository;
 import com.toyproject.studytimerproject.domain.user.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

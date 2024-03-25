@@ -2,6 +2,8 @@ package com.toyproject.studytimerproject.global.config;
 
 import com.toyproject.studytimerproject.domain.user.jwt.JwtProvider;
 import com.toyproject.studytimerproject.domain.user.repository.AccessLogRepository;
+import com.toyproject.studytimerproject.domain.user.repository.AccessTokenRepository;
+import com.toyproject.studytimerproject.domain.user.repository.RefreshTokenRepository;
 import com.toyproject.studytimerproject.domain.user.security.JwtAuthenticationFilter;
 import com.toyproject.studytimerproject.domain.user.security.JwtAuthorizationFilter;
 import com.toyproject.studytimerproject.domain.user.security.UserDetailsServiceImpl;
@@ -29,6 +31,8 @@ public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final AccessLogRepository accessLogRepository;
+    private final AccessTokenRepository accessTokenRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
     /**
      * Security 에서 제공하는 비밀번호 암호화 인터페이스의 구현체를 Bean 으로 등록
@@ -55,7 +59,7 @@ public class SecurityConfig {
      */
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        JwtAuthenticationFilter filter = new JwtAuthenticationFilter(jwtProvider, accessLogRepository);
+        JwtAuthenticationFilter filter = new JwtAuthenticationFilter(jwtProvider, accessLogRepository, accessTokenRepository, refreshTokenRepository);
         filter.setAuthenticationManager(authenticationManager(authenticationConfiguration));
         return filter;
     }

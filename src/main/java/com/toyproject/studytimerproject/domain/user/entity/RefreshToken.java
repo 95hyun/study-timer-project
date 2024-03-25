@@ -3,12 +3,18 @@ package com.toyproject.studytimerproject.domain.user.entity;
 import com.toyproject.studytimerproject.domain.user.entity.User;
 import com.toyproject.studytimerproject.global.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RefreshToken extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
