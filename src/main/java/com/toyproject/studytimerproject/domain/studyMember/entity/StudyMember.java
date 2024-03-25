@@ -1,4 +1,4 @@
-package com.toyproject.studytimerproject.domain.studySession.entity;
+package com.toyproject.studytimerproject.domain.studyMember.entity;
 
 import com.toyproject.studytimerproject.domain.study.entity.Study;
 import com.toyproject.studytimerproject.domain.user.entity.User;
@@ -6,12 +6,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
-@Getter
 @Entity
+@Getter
 @NoArgsConstructor
-public class StudySession {
+public class StudyMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +22,6 @@ public class StudySession {
     @JoinColumn(name = "study_id")
     private Study study;
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-
+    // 사용자의 스터디 그룹 내 역할
+    private String role; // member | master
 }

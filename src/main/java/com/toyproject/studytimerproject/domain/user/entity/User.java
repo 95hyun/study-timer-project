@@ -1,5 +1,7 @@
 package com.toyproject.studytimerproject.domain.user.entity;
 
+import com.toyproject.studytimerproject.domain.studyMember.entity.StudyMember;
+import com.toyproject.studytimerproject.domain.studySession.entity.StudySession;
 import com.toyproject.studytimerproject.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +9,9 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -32,6 +36,12 @@ public class User extends BaseEntity {
 //    @Column
 //    @Enumerated(value = EnumType.STRING)
 //    private UserRole role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudyMember> studyMembers = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudySession> studySessions = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private List<AccessToken> accessTokens;
