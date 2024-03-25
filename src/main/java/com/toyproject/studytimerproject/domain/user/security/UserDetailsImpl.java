@@ -1,12 +1,9 @@
 package com.toyproject.studytimerproject.domain.user.security;
 
 import com.toyproject.studytimerproject.domain.user.entity.User;
-import com.toyproject.studytimerproject.domain.user.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
@@ -29,16 +26,24 @@ public class UserDetailsImpl implements UserDetails {
         return user.getPassword();
     }
 
+    // role(authorities 사용)
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        UserRole role = user.getRole();
+//        String authority = role.getAuthority();
+//
+//        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
+//        Collection<GrantedAuthority> authorities = new ArrayList<>();
+//        authorities.add(simpleGrantedAuthority);
+//
+//        return authorities;
+//    }
+
+    // role(authorities 미사용)
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        UserRole role = user.getRole();
-        String authority = role.getAuthority();
 
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(simpleGrantedAuthority);
-
-        return authorities;
+        return null;
     }
 
     @Override
