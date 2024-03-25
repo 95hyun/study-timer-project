@@ -7,14 +7,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.Duration;
+import java.time.LocalDate;
 
-@Getter
 @Entity
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudySession {
+public class StudyDailySummary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,14 +24,11 @@ public class StudySession {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "study_id")
-    private Study study;
+    private LocalDate date;
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Duration totalStudyTime;
 
-    public void setEndTime() {
-        this.endTime = LocalDateTime.now();
+    public void addStudyTime(Duration StudyTime) {
+
     }
 }
