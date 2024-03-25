@@ -1,11 +1,10 @@
 package com.toyproject.studytimerproject.domain.user.entity;
 
-import com.toyproject.studytimerproject.domain.studyMember.entity.StudyMember;
-import com.toyproject.studytimerproject.domain.studySession.entity.StudySession;
+import com.toyproject.studytimerproject.domain.study.entity.StudyMember;
+import com.toyproject.studytimerproject.domain.study.entity.StudySession;
 import com.toyproject.studytimerproject.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

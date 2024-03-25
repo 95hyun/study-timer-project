@@ -1,4 +1,4 @@
-package com.toyproject.studytimerproject.domain.studySession.entity;
+package com.toyproject.studytimerproject.domain.study.entity;
 
 import com.toyproject.studytimerproject.domain.study.entity.Study;
 import com.toyproject.studytimerproject.domain.user.entity.User;
