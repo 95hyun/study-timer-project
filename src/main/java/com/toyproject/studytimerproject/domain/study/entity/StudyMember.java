@@ -3,12 +3,16 @@ package com.toyproject.studytimerproject.domain.study.entity;
 import com.toyproject.studytimerproject.domain.study.entity.Study;
 import com.toyproject.studytimerproject.domain.user.entity.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +26,6 @@ public class StudyMember {
     @JoinColumn(name = "study_id")
     private Study study;
 
-    // 사용자의 스터디 그룹 내 역할
-    private String role; // member | master
+    @Enumerated(EnumType.STRING)
+    private StudyMemberRole role; // member | master
 }
