@@ -34,4 +34,11 @@ public class AccessToken extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    // 토큰 정보 업데이트 메서드
+    public void updateTokenInfo(String token, String jti, Date expiresAt) {
+        this.token = token;
+        this.jti = jti;
+        this.expiresAt = expiresAt;
+    }
 }

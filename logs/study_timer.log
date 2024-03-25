@@ -476,3 +476,32 @@ java.lang.RuntimeException: User not found
 2024-03-26T02:19:32.003+09:00  INFO 47743 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-03-26T02:19:32.006+09:00  INFO 47743 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-03-26T02:19:32.016+09:00  INFO 47743 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-26T02:37:22.906+09:00  INFO 49106 --- [main] c.t.s.StudyTimerProjectApplication       : Starting StudyTimerProjectApplication using Java 17.0.9 with PID 49106 (/Users/hyun/Desktop/study-timer-project/build/classes/java/main started by hyun in /Users/hyun/Desktop/study-timer-project)
+2024-03-26T02:37:22.908+09:00  INFO 49106 --- [main] c.t.s.StudyTimerProjectApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-03-26T02:37:23.514+09:00  INFO 49106 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-26T02:37:23.581+09:00  INFO 49106 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 9 JPA repository interfaces.
+2024-03-26T02:37:24.029+09:00  INFO 49106 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-26T02:37:24.039+09:00  INFO 49106 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-26T02:37:24.039+09:00  INFO 49106 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-26T02:37:24.085+09:00  INFO 49106 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-26T02:37:24.086+09:00  INFO 49106 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1143 ms
+2024-03-26T02:37:24.209+09:00  INFO 49106 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-26T02:37:24.273+09:00  INFO 49106 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-26T02:37:24.310+09:00  INFO 49106 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-26T02:37:24.550+09:00  INFO 49106 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-26T02:37:24.574+09:00  INFO 49106 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-26T02:37:24.810+09:00  INFO 49106 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35e75f7a
+2024-03-26T02:37:24.812+09:00  INFO 49106 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-26T02:37:25.841+09:00  INFO 49106 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-26T02:37:26.124+09:00  INFO 49106 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-26T02:37:26.622+09:00  WARN 49106 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T02:37:26.849+09:00  INFO 49106 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@14f03f2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@235b4aea, org.springframework.security.web.context.SecurityContextHolderFilter@13f358f8, org.springframework.security.web.header.HeaderWriterFilter@312e8eaf, org.springframework.web.filter.CorsFilter@31f4fdc5, org.springframework.security.web.authentication.logout.LogoutFilter@7859fc7, com.toyproject.studytimerproject.domain.user.security.JwtAuthorizationFilter@50b78155, com.toyproject.studytimerproject.domain.user.security.JwtAuthenticationFilter@356cb230, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64dcfd09, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@fefd4a2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64e680c5, org.springframework.security.web.session.SessionManagementFilter@2f307fcc, org.springframework.security.web.access.ExceptionTranslationFilter@7f219e84, org.springframework.security.web.access.intercept.AuthorizationFilter@66c88fce]
+2024-03-26T02:37:27.068+09:00  INFO 49106 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-26T02:37:27.077+09:00  INFO 49106 --- [main] c.t.s.StudyTimerProjectApplication       : Started StudyTimerProjectApplication in 4.56 seconds (process running for 5.109)
+2024-03-26T02:38:13.892+09:00  INFO 49106 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-26T02:38:13.904+09:00  INFO 49106 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-26T02:38:13.906+09:00  INFO 49106 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-26T02:38:27.569+09:00  INFO 49106 --- [http-nio-8080-exec-4] c.t.s.domain.study.service.StudyService  : 스터디 생성 시작test
+2024-03-26T02:39:08.053+09:00  INFO 49106 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-26T02:39:08.055+09:00  INFO 49106 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-26T02:39:08.061+09:00  INFO 49106 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

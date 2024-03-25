@@ -35,4 +35,10 @@ public class RefreshToken extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public void updateTokenInfo(String token, String jti, Date expiresAt) {
+        this.token = token;
+        this.jti = jti;
+        this.expiresAt = expiresAt;
+    }
 }

@@ -63,10 +63,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User user = ((UserDetailsImpl) authResult.getPrincipal()).getUser();
         String username = user.getUsername();
 
-//        // 토큰 생성
-//        String accessToken = jwtProvider.createToken(jwtProvider.createTokenPayload(username, TokenType.ACCESS));
-//        String refreshToken = jwtProvider.createToken(jwtProvider.createTokenPayload(username, TokenType.REFRESH));
-
         // 액세스 토큰 페이로드 생성
         TokenPayload accessTokenPayload = jwtProvider.createTokenPayload(user.getUsername(), TokenType.ACCESS);
         String accessTokenValue = jwtProvider.createToken(accessTokenPayload);
@@ -76,21 +72,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String refreshTokenValue = jwtProvider.createToken(refreshTokenPayload);
 
         // AccessToken 엔티티 생성 및 저장
-        AccessToken accessToken = AccessToken.builder()
-                .token(accessTokenValue)
-                .jti(accessTokenPayload.getJti())
-                .expiresAt(accessTokenPayload.getExpiresAt())
-                .user(user)
-                .build();
+        AccessToken accessToken = accessTokenRepository.findByUserId(user.getId())
+                .orElseGet(() -> AccessToken.builder().user(user).build());
+        accessToken.updateTokenInfo(accessTokenValue, accessTokenPayload.getJti(), accessTokenPayload.getExpiresAt());
         accessTokenRepository.save(accessToken);
 
         // RefreshToken 엔티티 생성 및 저장
-        RefreshToken refreshToken = RefreshToken.builder()
-                .token(refreshTokenValue)
-                .jti(refreshTokenPayload.getJti())
-                .expiresAt(refreshTokenPayload.getExpiresAt())
-                .user(user)
-                .build();
+        RefreshToken refreshToken = refreshTokenRepository.findByUserId(user.getId())
+                .orElseGet(() -> RefreshToken.builder().user(user).build());
+        refreshToken.updateTokenInfo(refreshTokenValue, refreshTokenPayload.getJti(), refreshTokenPayload.getExpiresAt());
         refreshTokenRepository.save(refreshToken);
 
         // response 반환
