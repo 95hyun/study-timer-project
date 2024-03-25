@@ -89,7 +89,8 @@ public class SecurityConfig {
                 request.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용
                         .requestMatchers("/auth/**").permitAll() // 로그인 & 회원가입 & Refresh Token 갱신 허가 (WHITE_LIST)
                         .requestMatchers("/actuator/health").permitAll() // health check API 허가 (WHITE_LIST)
-                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리 진행
+                        .anyRequest().permitAll()
+//                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리 진행
         );
 
         // Security 의 기본 설정인 Session 방식이 아닌 JWT 방식을 사용하기 위한 설정
