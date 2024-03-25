@@ -5,6 +5,7 @@ import com.toyproject.studytimerproject.domain.studySession.entity.StudySession;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
