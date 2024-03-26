@@ -1,6 +1,7 @@
-<img width="956" alt="스크린샷 2024-03-23 오전 1 43 07" src="https://github.com/Gift-For-You-Project/gift-for-you-BE/assets/151743721/371da401-c895-4aa7-86a2-214d42f4ef71">
+![스타배너3](https://github.com/95hyun/Algorithm/assets/151743721/ca83b5d6-b04b-48aa-82c8-b67f2ad8aff1)
 
-# ⏰ Study timer project
+
+# ⏰ 스타 - Study Timer
 개인 프로젝트
 
 기간 : 24.03.23 ~ 개발 중 ('develop' branch에서 개발)
