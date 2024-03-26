@@ -28,7 +28,10 @@ public class StudyDailySummary {
 
     private Duration totalStudyTime;
 
-    public void addStudyTime(Duration StudyTime) {
-
+    public void addStudyTime(Duration studyTime) {
+        if (totalStudyTime == null) {
+            totalStudyTime = Duration.ZERO;
+        }
+        this.totalStudyTime = this.totalStudyTime.plus(studyTime);
     }
 }
