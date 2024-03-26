@@ -1,5 +1,6 @@
 package com.toyproject.studytimerproject.domain.study.service;
 
+import com.toyproject.studytimerproject.domain.study.dto.StudySessionDto;
 import com.toyproject.studytimerproject.domain.study.entity.Study;
 import com.toyproject.studytimerproject.domain.study.entity.StudyDailySummary;
 import com.toyproject.studytimerproject.domain.study.entity.StudySession;
@@ -26,7 +27,7 @@ public class StudySessionService {
     private final StudyDailySummaryRepository studyDailySummaryRepository;
 
     @Transactional
-    public StudySession startStudySession(Long studyId, UserDetailsImpl userDetails) {
+    public StudySessionDto startStudySession(Long studyId, UserDetailsImpl userDetails) {
         if (userDetails == null) {
             throw new RuntimeException("User not found");
         }
@@ -42,15 +43,15 @@ public class StudySessionService {
                 .startTime(LocalDateTime.now())
                 .build();
         studySessionRepository.save(studySession);
-        return studySession;
+        return StudySessionDto.from(studySession);
     }
 
     @Transactional
-    public StudySession endStudySession(Long sessionId, UserDetailsImpl userDetails) {
+    public StudySessionDto endStudySession(Long sessionId, UserDetailsImpl userDetails) {
         StudySession studySession = studySessionRepository.findById(sessionId)
                 .orElseThrow(() -> new RuntimeException("StudySession not found"));
 
-        if (!studySession.getUser().equals(userDetails.getUser())) {
+        if (!studySession.getUser().getId().equals(userDetails.getUser().getId())) {
             throw new IllegalArgumentException("스터디세션의 유저와 사용자가 일치하지 않습니다.");
         }
 
@@ -74,7 +75,7 @@ public class StudySessionService {
 
         log.info("학습 기록 종료 - 일 학습 시간 업데이트" + userDetails.getUsername() + " | " + sessionDuration);
 
-        return studySession;
+        return StudySessionDto.from(studySession);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.toyproject.studytimerproject.domain.study.controller;
 
+import com.toyproject.studytimerproject.domain.study.dto.StudySessionDto;
 import com.toyproject.studytimerproject.domain.study.entity.StudySession;
 import com.toyproject.studytimerproject.domain.study.service.StudySessionService;
 import com.toyproject.studytimerproject.domain.user.security.UserDetailsImpl;
@@ -16,15 +17,15 @@ public class StudySessionController {
 
     // 학습시간 기록 시작
     @PostMapping("/start/{studyId}")
-    public ResponseEntity<StudySession> startStudySession(@PathVariable Long studyId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        StudySession studySession = studySessionService.startStudySession(studyId, userDetails);
-        return ResponseEntity.ok(studySession);
+    public ResponseEntity<StudySessionDto> startStudySession(@PathVariable Long studyId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        StudySessionDto studySessionDto = studySessionService.startStudySession(studyId, userDetails);
+        return ResponseEntity.ok(studySessionDto);
     }
 
     // 학습시간 기록 종료
     @PostMapping("/end/{sessionId}")
-    public ResponseEntity<StudySession> endStudySession(@PathVariable Long sessionId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        StudySession studySession = studySessionService.endStudySession(sessionId, userDetails);
-        return ResponseEntity.ok(studySession);
+    public ResponseEntity<StudySessionDto> endStudySession(@PathVariable Long sessionId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        StudySessionDto studySessionDto = studySessionService.endStudySession(sessionId, userDetails);
+        return ResponseEntity.ok(studySessionDto);
     }
 }
