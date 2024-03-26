@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='/';">스타</button></li>
+            <li class="auth-button">
+                <button onclick="window.location.href='/my-studies';">내 스터디</button>
+                <button onclick="window.location.href='/study-list';">스터디 목록</button>
+                <!-- 로그인/로그아웃 버튼 자리 -->
+                <button id="loginButton" onclick="window.location.href='/login';" style="display:none;">로그인</button>
+                <button id="logoutButton" onclick="logout();" style="display:none;">로그아웃</button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- Body 내용은 여기에 추가될 예정 -->
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 로컬 스토리지에서 엑세스 토큰을 확인
+        const accessToken = localStorage.getItem('accessToken');
+
+        // 엑세스 토큰이 있는 경우, 사용자가 로그인한 것으로 간주
+        if(accessToken) {
+            document.getElementById('logoutButton').style.display = 'inline-block';
+        } else {
+            document.getElementById('loginButton').style.display = 'inline-block';
+        }
+    });
+
+    // 로그아웃 함수
+    function logout() {
+        const accessToken = localStorage.getItem('accessToken');
+        // 서버 쪽 /logout 엔드포인트 호출
+        if (accessToken) {
+            fetch('/auth/logout', {
+                method: 'POST', // 로그아웃 요청은 POST 방식으로 처리
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken, // Bearer 토큰으로 인증 정보 포함
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Logout successful');
+                    } else {
+                        console.error('Logout failed');
+                    }
+                })
+                .catch(error => console.error('Error logging out:', error))
+                .finally(() => {
+                    // 서버 요청 후 또는 실패 시에도 로컬 스토리지에서 토큰 제거
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('refreshToken');
+                    // 로그인 페이지로 리다이렉트
+                    window.location.href = '/login';
+                });
+        } else {
+            // 토큰이 없는 경우 직접 로컬 스토리지 정리 후 로그인 페이지로 리다이렉트
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            window.location.href = '/login';
+        }
+    }
+
+</script>
+</body>
+</html>
