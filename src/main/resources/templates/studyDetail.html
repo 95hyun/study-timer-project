@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Detail</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <h1>Study Details</h1>
+</header>
+
+<main>
+  <table>
+    <thead>
+    <tr>
+      <th>멤버 닉네임</th>
+      <th th:text="${dates.monday}">월요일 날짜</th>
+      <th th:text="${dates.tuesday}">화요일 날짜</th>
+      <th th:text="${dates.wednesday}">수요일 날짜</th>
+      <th th:text="${dates.thursday}">목요일 날짜</th>
+      <th th:text="${dates.friday}">금요일 날짜</th>
+      <th th:text="${dates.saturday}">토요일 날짜</th>
+      <th th:text="${dates.sunday}">일요일 날짜</th>
+      <th>?주차 총 학습시간</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${studyDetails.members}">
+      <td th:text="${member.nickname}">멤버 닉네임</td>
+      <td th:text="${member.mondayHours}">월요일 학습시간</td>
+      <td th:text="${member.tuesdayHours}">화요일 학습시간</td>
+      <td th:text="${member.wednesdayHours}">수요일 학습시간</td>
+      <td th:text="${member.thursdayHours}">목요일 학습시간</td>
+      <td th:text="${member.fridayHours}">금요일 학습시간</td>
+      <td th:text="${member.saturdayHours}">토요일 학습시간</td>
+      <td th:text="${member.sundayHours}">일요일 학습시간</td>
+      <td th:text="${member.totalWeeklyHours}">주차 총 학습시간</td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+
+<footer>
+  <!-- 푸터 내용 -->
+</footer>
+</body>
+</html>

@@ -11,9 +11,8 @@
         <ul>
             <li><button onclick="window.location.href='/';">스타</button></li>
             <li class="auth-button">
-                <button onclick="window.location.href='/my-studies';">내 스터디</button>
-                <button onclick="window.location.href='/study-list';">스터디 목록</button>
-                <!-- 로그인/로그아웃 버튼 자리 -->
+                <!-- "스터디" 버튼으로 이름 변경 및 onClick 이벤트 추가 -->
+                <button onclick="navigateToStudyPage();">스터디</button>
                 <button id="loginButton" onclick="window.location.href='/login';" style="display:none;">로그인</button>
                 <button id="logoutButton" onclick="logout();" style="display:none;">로그아웃</button>
             </li>
@@ -27,10 +26,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 로컬 스토리지에서 엑세스 토큰을 확인
         const accessToken = localStorage.getItem('accessToken');
-
-        // 엑세스 토큰이 있는 경우, 사용자가 로그인한 것으로 간주
         if(accessToken) {
             document.getElementById('logoutButton').style.display = 'inline-block';
         } else {
@@ -43,10 +39,10 @@
         const accessToken = localStorage.getItem('accessToken');
         // 서버 쪽 /logout 엔드포인트 호출
         if (accessToken) {
-            fetch('/auth/logout', {
+            fetch('/api/auth/logout', {
                 method: 'POST', // 로그아웃 요청은 POST 방식으로 처리
                 headers: {
-                    'Authorization': 'Bearer ' + accessToken, // Bearer 토큰으로 인증 정보 포함
+                    'AccessToken': 'Bearer ' + accessToken, // Bearer 토큰으로 인증 정보 포함
                 }
             })
                 .then(response => {
@@ -72,6 +68,38 @@
         }
     }
 
+    function navigateToStudyPage() {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            window.location.href = '/login';
+            return;
+        }
+
+        fetch('/api/check-study-membership', {
+            method: 'GET',
+            headers: {
+                'AccessToken': 'Bearer ' + accessToken,
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to check study membership');
+                }
+            })
+            .then(data => {
+                if (data.isMember && data.studyId) {
+                    window.location.href = `/study/${data.studyId}`;
+                } else {
+                    window.location.href = '/study-list';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.href = '/login';
+            });
+    }
 </script>
 </body>
 </html>

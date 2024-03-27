@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             nickname: document.getElementById("nickname").value
         };
 
-        fetch("/auth/signup", {
+        fetch("/api/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

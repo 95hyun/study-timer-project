@@ -6,4 +6,5 @@ import lombok.Getter;
 public class StudyRequestDto {
 
     private String studyName;
+    private String studyDescription;
 }

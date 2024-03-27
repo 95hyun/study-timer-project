@@ -10,7 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/study/session")
+@RequestMapping("/api/study/session")
 @RequiredArgsConstructor
 public class StudySessionController {
     private final StudySessionService studySessionService;

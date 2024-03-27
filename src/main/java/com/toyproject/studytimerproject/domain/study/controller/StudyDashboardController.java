@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/study/dashboard")
+@RequestMapping("/api/study/dashboard")
 public class StudyDashboardController {
     private final StudySummaryService studySummaryService;
 
