@@ -19,4 +19,9 @@ public class ViewController {
     public String showIndexPage() {
         return "index";
     }
+
+    @GetMapping("/signup")
+    public String showSignupPage() {
+        return "signup";
+    }
 }

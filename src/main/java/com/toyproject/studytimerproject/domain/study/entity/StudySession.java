@@ -24,7 +24,7 @@ public class StudySession {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "study_id")
+    @JoinColumn(name = "study_id", nullable = true)
     private Study study;
 
     private LocalDateTime startTime;

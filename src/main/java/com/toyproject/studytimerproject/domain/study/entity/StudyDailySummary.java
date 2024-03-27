@@ -24,6 +24,11 @@ public class StudyDailySummary {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_id", nullable = true) // 스터디 참여가 선택적임
+    private Study study;
+
+
     private LocalDate date;
 
     private Duration totalStudyTime;

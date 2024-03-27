@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Optional: CSS 스타일 링크 -->
 </head>
 <body>
 <h2>Login</h2>
@@ -17,6 +18,10 @@
     </div>
     <div>
         <button type="submit">Login</button>
+    </div>
+    <div>
+        <!-- 회원가입 페이지로의 링크 추가 -->
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
     </div>
 </form>
 <script th:src="@{/js/login.js}"></script>

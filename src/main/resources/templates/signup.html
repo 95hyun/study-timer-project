@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- 스타일시트 링크, 필요에 따라 수정 -->
+</head>
+<body>
+<div class="signup-container">
+  <h1>회원가입</h1>
+  <form id="signupForm">
+    <div>
+      <label for="username">아이디:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+      <label for="password">비밀번호:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <label for="nickname">닉네임:</label>
+      <input type="text" id="nickname" name="nickname" required>
+    </div>
+    <button type="submit">회원가입</button>
+  </form>
+</div>
+<script src="/js/signup.js"></script> <!-- 회원가입 처리를 위한 자바스크립트, 아래에서 구현 -->
+</body>
+</html>

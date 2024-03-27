@@ -24,6 +24,10 @@ public class Study {
     @Column(nullable = false)
     private String studyName;
 
+    @NotNull
+    @Column(nullable = false)
+    private String studyDescription;
+
     @OneToMany(mappedBy = "study", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudyMember> studyMembers = new HashSet<>();
 
